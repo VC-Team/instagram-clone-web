@@ -33,9 +33,6 @@ module.exports = (purgecss = false) => {
       "window.$": "jquery",
       "window.jQuery": "jquery",
     }),
-    new CopyWebpackPlugin([
-      { from: "src/assets/images", to: "src/assets/images" },
-    ]),
   ]
   return {
     entry: {

@@ -4,7 +4,7 @@ export let BASE_URL = document.head.querySelector<any>(
 
 export const SERVICES = {
   API_URL_BASE: BASE_URL,
-  CRM_URL_BASE: 'https://hdbank-crm-api.dev-altamedia.com',
+  CRM_URL_BASE: '',
   AuthenticationHeaderField: "JWT_TOKEN_HDBANK_CMS",
 };
 
@@ -13,7 +13,7 @@ export const KAFKA = {
 }
 
 export const USA = "USA";
-export const LANGUAGE = [ "USA", "VNM" ];
+export const LANGUAGE = ["USA", "VNM"];
 export const CURRENT_LANGUAGE = "__INIT__CURRENT_LANGUAGE__";
 
 export const DASHBOARD = "/dashboard";

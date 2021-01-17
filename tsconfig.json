@@ -20,9 +20,6 @@
       "@entities/*": [
         "src/domain/useCases/entities/*"
       ],
-      "@frameworks/*": [
-        "src/frameworks/*"
-      ],
       "@api/*": [
         "src/core/services/api/*"
       ],
