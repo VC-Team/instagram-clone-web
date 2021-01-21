@@ -1,3 +1,4 @@
+import DefaultLayout from "@components/layout";
 import React, { useEffect } from "react";
 import { privateRouter } from "../privateRouter";
 import ShowRouter from "./ShowRouter";
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const PrivatePage: React.FC<Props> = ({ }) => {
-  return <ShowRouter routers={privateRouter} />
+  return <DefaultLayout ><ShowRouter routers={privateRouter} /></DefaultLayout>
 };
 
 export default PrivatePage;

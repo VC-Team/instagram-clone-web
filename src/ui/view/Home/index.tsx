@@ -1,7 +1,10 @@
+import Stories from "@view/stories"
 import React from "react"
 
 const Home = props => {
-    return <h1>Hello</h1>
+    return (
+        <Stories />
+    )
 }
 
 export default Home
