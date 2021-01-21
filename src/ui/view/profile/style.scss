@@ -1,12 +1,13 @@
+:root {
+    --header-height: 54px;
+    --page-margin-side: 5px;
+    --blue: #0095f6;
+    --link-blue: #00376b;
+    --dull-grey: #8e8e8e;
+    --bg-grey: rgb(250, 250, 250);
+}
+
 .Profile {
-    :root {
-        --header-height: 54px;
-        --page-margin-side: 5px;
-        --blue: #0095f6;
-        --link-blue: #00376b;
-        --dull-grey: #8e8e8e;
-        --bg-grey: rgb(250, 250, 250);
-    }
     a,
     abbr,
     acronym,
