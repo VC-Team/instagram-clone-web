@@ -1,0 +1,15 @@
+.layout {
+    position: relative;
+
+    .layout-header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 9;
+    }
+
+    .layout-main {
+        width: 935px;
+        margin: 0 auto;
+    }
+}
