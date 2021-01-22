@@ -4,13 +4,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const SRC_DIR = path.resolve(__dirname, "src");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 const rootDir = path.resolve(process.cwd());
 const glob = require("glob");
 const VENDOR_LIBS = [
   "axios",
-  "moment",
   "react",
   "react-dom",
   "react-router",
@@ -21,7 +19,6 @@ module.exports = (purgecss = false) => {
     new HtmlWebpackPlugin({
       template: SRC_DIR + "/index.html",
     }),
-    new MomentLocalesPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",

@@ -13,7 +13,7 @@ const config = {
   plugins: [
     new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(["dist"]),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin(/^\.\/locale$/),
     new webpack.SourceMapDevToolPlugin({
       filename: "[name].js.map",
       exclude: ["vendor.js"],
