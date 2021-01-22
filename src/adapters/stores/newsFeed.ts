@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Comment from '@entities/comment'
 import Post from 'src/domain/entities/post'
+import { indexOfArrayObject } from '@helper/functions'
 
 type IStore = {
     [postId: string]: Post
 }
 
-const profileStore = createSlice({
+const newsFeedStore = createSlice({
     name: 'newsFeed',
     initialState: {} as IStore,
     reducers: {
@@ -21,13 +23,12 @@ const profileStore = createSlice({
 
             return newState
         },
-        updateListPost: (state, action: PayloadAction<Array<Post>>) => {
+        updateListPost: (state, action: PayloadAction<Array<any>>) => {
             if (!Array.isArray(action.payload)) return state
 
             const newState = { ...state }
 
-            action.payload.forEach(item => {
-                const post = new Post(item)
+            action.payload.forEach(post => {
                 newState[post._id] = {
                     ...newState[post._id],
                     ...post
@@ -49,8 +50,6 @@ const profileStore = createSlice({
             return newState
         },
         fetchListComment: (state, action: PayloadAction<Post>) => {
-            if (!Array.isArray(action.payload)) return state
-
             const newState = { ...state }
             const newPost = new Post(action.payload)
 
@@ -58,8 +57,39 @@ const profileStore = createSlice({
 
             return newState
         },
-        updateListComment:  
+        updateListComment: (state, action: PayloadAction<Post>) => {
+            const newState = { ...state }
+            const newPost = action.payload
+
+            newPost.listComment.forEach(comment => {
+                // check xem comment này có trong list cũ chưa
+                const index = indexOfArrayObject(state.listComment, '_id', comment._id)
+                if (index == -1) { // không có
+                    newState[newPost._id].listComment.push({
+                        ...newState[newPost._id].listComment[index],
+                        ...comment
+                    })
+                } else { // có
+                    newState[newPost._id].listComment[index] = {
+                        ...newState[newPost._id].listComment[index],
+                        ...comment
+                    }
+                }
+            })
+
+            return newState
+        },
+        deleteListComment: (state, action: PayloadAction<Post>) => {
+            const newState = { ...state }
+            const newPost = action.payload
+
+            newPost.listComment.forEach(comment => {
+                const index = indexOfArrayObject(state.listComment, '_id', comment._id)
+                const currentListComment = newState[newPost._id].listComment.slice(index, 1)
+                newState[newPost._id].listComment = currentListComment
+            })
+        }
     },
 })
 
-export default profileStore
+export default newsFeedStore
