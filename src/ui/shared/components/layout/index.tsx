@@ -11,8 +11,6 @@ import { MdHome } from "react-icons/md"
 import ModelLogin from '@components/commons/modelLogin'
 
 const DefaultLayout = (props) => {
-    console.log(props);
-
     const [ visible, setVisible ] = useState(false);
 
     const onpenForm = () => {

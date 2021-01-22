@@ -1,6 +1,6 @@
 import PrivateLogin from "src/ui/shared/hoc/PrivateLogin";
 import PublicPage from "src/ui/shared/routers/component/PublicPage";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Switch } from "react-router-dom";
 import "./../src/ui/styles/styles.scss"
 const PrivatePage = React.lazy(() => import("src/ui/shared/routers/component/PrivatePage"));

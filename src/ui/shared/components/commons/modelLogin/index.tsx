@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import AuthPresenter from 'src/adapters/presentation/auth';
 import "./style.scss"
+
 const ModelLogin = (props) => {
     const [ state, setState ] = useState({
         register: true,
         login: false
     });
     const [ inputs, setInputs ] = useState({
-        usernames: '',
+        userName: '',
         email: '',
         password: ''
     })
@@ -27,19 +29,19 @@ const ModelLogin = (props) => {
         })
 
     }
+
     const closeModel = (e: any) => {
         const className = e.target.getAttribute("class");
         if (className === "model") {
             props.setVisible(false);
         }
-
-
     }
+
     const onSubmit = (e: any) => {
         e.preventDefault();
-        console.log("user", inputs);
-
+        new AuthPresenter().login(inputs)
     }
+
     return (
         <div className="model" onClick={closeModel}>
             <div className="model__container">
@@ -50,8 +52,8 @@ const ModelLogin = (props) => {
                                 <img src="/images/logo_header.png" alt="image" />
                             </div>
                             <div className="model__group">
-                                <input type="text" name="usernames" className="model__input" placeholder="UserName..."
-                                    value={inputs.usernames}
+                                <input type="text" name="userName" className="model__input" placeholder="UserName..."
+                                    value={inputs.userName}
                                     onChange={handleInput}
                                 />
                             </div>
@@ -73,23 +75,23 @@ const ModelLogin = (props) => {
                             </div>
                         </form>
                     </div> : <div className="model__model__form">
-                            <form>
-                                <div className="model__group">
-                                    <img src="/images/logo_header.png" alt="image" />
-                                </div>
-                                <div className="model__group">
-                                    <input type="email" name="email" className="model__input" placeholder="Email..." />
-                                </div>
-                                <div className="model__group">
-                                    <input type="password" name="password" className="model__input" placeholder="Password..." />
-                                </div>
-                                <div className="model__group">
-                                    <input type="submit" value="Login" className="btn btn-smart" />
-                                </div>
-                                <div className="model__group">
-                                    <span onClick={formToogle}>Create a new account ?</span>
-                                </div>
-                            </form>
+                            {/* <form> */}
+                            <div className="model__group">
+                                <img src="/images/logo_header.png" alt="image" />
+                            </div>
+                            <div className="model__group">
+                                <input type="text" name="userName" className="model__input" placeholder="Email..." />
+                            </div>
+                            <div className="model__group">
+                                <input type="password" name="password" className="model__input" placeholder="Password..." />
+                            </div>
+                            <div className="model__group">
+                                <button onClick={onSubmit} className="btn btn-smart">submit</button>
+                            </div>
+                            <div className="model__group">
+                                <span onClick={formToogle}>Create a new account ?</span>
+                            </div>
+                            {/* </form> */}
                         </div>
                 }
 
