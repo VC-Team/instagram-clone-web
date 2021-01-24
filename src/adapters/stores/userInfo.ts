@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import User from 'src/domain/entities/user'
 
-const profileStore = createSlice({
+const userInfoStore = createSlice({
     name: 'user',
     initialState: new User({}),
     reducers: {
-        fetch: (state, action) => {
+        fetchUser: (state, action) => {
             return new User(action.payload)
         },
     },
 })
 
-export default profileStore
+export default userInfoStore

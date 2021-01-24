@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./style.scss"
 import { FaRegHeart, FaRegComment, FaCheck } from "react-icons/fa"
+import { useLocation, useParams } from 'react-router'
+import useUser from 'src/ui/viewModels/useUser'
+import { useSelector } from 'react-redux'
 const ProFile = () => {
+    const { userId }: any = useParams()
+    const { getUserInfo } = useUser()
+    const userInfo = useSelector(state => state.userInfo)
+    console.log('userInfo: ', userInfo);
+
+    useEffect(() => {
+        getUserInfo(userId)
+    }, [])
+
     return (
         <div className="Profile">
             <main>

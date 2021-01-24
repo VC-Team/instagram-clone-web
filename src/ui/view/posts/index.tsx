@@ -1,23 +1,39 @@
+import Post from '@entities/post'
 import Actions from '@view/actions'
 import Comments from "@view/comments"
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import uselistPosts from 'src/ui/viewModels/uselistPosts'
 import "./style.scss"
 const Posts = () => {
+    const listPostsStore = useSelector((state: any) => state.listPosts)
+    const { listPosts, getlistPosts } = uselistPosts(listPostsStore)
+
+    useEffect(() => {
+        getlistPosts.execute({ limit: 10, skip: 0 })
+    }, [])
+
     return (
         <div className="posts">
-            <div className="posts__header">
-                <div className="posts__header-avatar">
-                    <img src="https://i.pinimg.com/236x/59/ff/51/59ff51e62283d9e7b6429b451d48c85a.jpg" alt="huy" />
-                </div>
-                <div className="posts__header-name">
-                    Huy Kun
-                </div>
-            </div>
-            <div className="posts__img">
-                <img src="https://i.pinimg.com/564x/ac/47/f5/ac47f5b4fbfd53cb97e437ef7cf7141d.jpg" alt="kuns" />
-            </div>
-            <Actions />
-            <Comments />
+            {
+                listPosts.map((post: Post) => {
+                    return <div key={post._id}>
+                        <div className="posts__header">
+                            <div className="posts__header-avatar">
+                                <img src={post.author.avatar} alt="huy" />
+                            </div>
+                            <div className="posts__header-name">
+                                {post.author.userName}
+                            </div>
+                        </div>
+                        <div className="posts__img">
+                            <img src={post.medias[0]} alt="kuns" />
+                        </div>
+                        <Actions key={post._id} post={post} />
+                        <Comments />
+                    </div>
+                })
+            }
         </div>
     )
 }

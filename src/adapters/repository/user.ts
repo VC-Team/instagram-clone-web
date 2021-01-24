@@ -1,21 +1,21 @@
 import httpRepository from "./http"
 
 class UserRepository {
-    async getProfile(userId) {
+    async getUserInfo(userId) {
         return await httpRepository.execute({
-            path: `/user/${ userId }`
+            path: `/user/${userId}`
         })
     }
 
     async getFollowing(userId) {
         return await httpRepository.execute({
-            path: `/user/${ userId }/followings`
+            path: `/user/${userId}/followings`
         })
     }
 
     async editProfile(userId, payload) {
         return await httpRepository.execute({
-            path: `/user/${ userId }`,
+            path: `/user/${userId}`,
             method: "put",
             payload
         })
@@ -23,7 +23,7 @@ class UserRepository {
 
     async getFollowers(userId) {
         return await httpRepository.execute({
-            path: `/user/${ userId }/followers`
+            path: `/user/${userId}/followers`
         })
     }
 

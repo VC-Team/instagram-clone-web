@@ -3,13 +3,14 @@ import User from "./user"
 
 class Post {
     _id: string = ''
-    author: string = ''
+    author: User = new User({})
     caption: string = ''
     medias: Array<any> = []
     totalLike: number = 0
     totalComment: number = 0
-    listComment: Array<Comment> = [new Comment({})]
-    topFollowingLikeToo: Array<User> = [new User({})]
+    amILike: number = 0
+    listComment: Array<Comment> = []
+    topFollowingLikeToo: Array<User> = []
 
     constructor(post) {
         Object.keys(this).forEach(key => {

@@ -6,8 +6,8 @@ class UserInteractor extends UserRepository {
         super()
     }
 
-    async getProfile(userId: string) {
-        return await super.getProfile(userId).then(res => {
+    async getUserInfo(userId: string) {
+        return await super.getUserInfo(userId).then(res => {
             return new User(res)
         })
     }
@@ -25,4 +25,4 @@ class UserInteractor extends UserRepository {
     }
 }
 
-new UserInteractor()
+export default UserInteractor

@@ -10,7 +10,7 @@ export const privateRouter: Array<object> = [
     main: () => <Home />,
   },
   {
-    path: "/profile",
+    path: "/profile/:userId",
     exact: true,
     permissionCode: "ALLOW",
     main: () => <ProFile />,

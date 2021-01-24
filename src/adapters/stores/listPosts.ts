@@ -7,8 +7,8 @@ type IStore = {
     [postId: string]: Post
 }
 
-const newsFeedStore = createSlice({
-    name: 'newsFeed',
+const listPostsStore = createSlice({
+    name: 'listPosts',
     initialState: {} as IStore,
     reducers: {
         fetchListPost: (state, action: PayloadAction<Array<Post>>) => {
@@ -92,4 +92,4 @@ const newsFeedStore = createSlice({
     },
 })
 
-export default newsFeedStore
+export default listPostsStore

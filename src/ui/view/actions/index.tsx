@@ -1,16 +1,26 @@
 import React, { useState } from 'react'
 import "./style.scss"
 import { FaRegPaperPlane, FaRegHeart, FaRegComment, FaRegBookmark } from "react-icons/fa"
-const Actions = () => {
-    const [ activeLike, setActiveLike ] = useState(false);
-    const [ activeSave, setActiveSave ] = useState(false);
+import Post from '@entities/post';
+import usePost from 'src/ui/viewModels/usePost';
+
+interface IProps {
+    post: Post
+}
+
+const Actions = (props: IProps) => {
+    const { post } = props
+    const [activeSave, setActiveSave] = useState(false);
+
+    const { amILike, reaction } = usePost(post)
+
     return (
         <div className="Actions">
             <div className="actions">
                 <div className="actions__list-a">
                     <span
-                        className={`action__list_like ${ activeLike && "active" } action`}
-                        onClick={() => setActiveLike(!activeLike)}
+                        className={`action__list_like ${amILike && "active"} action`}
+                        onClick={() => reaction()}
                     >
                         <FaRegHeart className="action__icons" />
                     </span>
@@ -23,7 +33,7 @@ const Actions = () => {
                 </div>
                 <div className="action-b">
                     <span
-                        className={`action-b-save ${ activeSave && "active" } action`}
+                        className={`action-b-save ${activeSave && "active"} action`}
                         onClick={() => setActiveSave(!activeSave)}
                     >
                         <FaRegBookmark className="action__icons" />

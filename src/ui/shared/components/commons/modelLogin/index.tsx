@@ -3,11 +3,11 @@ import AuthPresenter from 'src/adapters/presentation/auth';
 import "./style.scss"
 
 const ModelLogin = (props) => {
-    const [ state, setState ] = useState({
+    const [state, setState] = useState({
         register: true,
         login: false
     });
-    const [ inputs, setInputs ] = useState({
+    const [inputs, setInputs] = useState({
         userName: '',
         email: '',
         password: ''
@@ -15,9 +15,9 @@ const ModelLogin = (props) => {
     const handleInput = (e: any) => {
         setInputs({
             ...inputs,
-            [ e.target.name ]: e.target.value,
-            [ e.target.name ]: e.target.value,
-            [ e.target.name ]: e.target.value
+            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     }
 
@@ -80,10 +80,17 @@ const ModelLogin = (props) => {
                                 <img src="/images/logo_header.png" alt="image" />
                             </div>
                             <div className="model__group">
-                                <input type="text" name="userName" className="model__input" placeholder="Email..." />
+                                <input type="text"
+                                    value={inputs.userName}
+                                    onChange={handleInput}
+                                    name="userName"
+                                    className="model__input" placeholder="User name" />
                             </div>
                             <div className="model__group">
-                                <input type="password" name="password" className="model__input" placeholder="Password..." />
+                                <input
+                                    value={inputs.password}
+                                    onChange={handleInput}
+                                    type="password" name="password" className="model__input" placeholder="Password..." />
                             </div>
                             <div className="model__group">
                                 <button onClick={onSubmit} className="btn btn-smart">submit</button>

@@ -1,6 +1,7 @@
 import store from "@stores/index";
-import profileStore from "@stores/user";
+import profileStore from "@stores/profile";
 import AuthInteractor from "@useCases/auth";
+import UserInteractor from "@useCases/user";
 
 export interface IRegisterPort {
     fullName: string,
@@ -16,17 +17,27 @@ export interface ILoginPort {
     password: string
 }
 
-class AuthPresenter {
+class AuthPresenter extends AuthInteractor {
+    constructor() {
+        super()
+    }
+
     async register(data: IRegisterPort) {
         return await new AuthInteractor().register(data)
     }
 
     async login(data: ILoginPort) {
-        const { login } = new AuthInteractor()
-        return await login(data).then(res => {
-            store.dispatch(profileStore.actions.fetch(res.user))
+        const loginResponse = await await super.login(data).then(res => {
+            super.setToken(res.token)
             return res
         })
+        const userIntoractor = new UserInteractor()
+
+        userIntoractor.getUserInfo(loginResponse.userInfo._id).then(res => {
+            store.dispatch(profileStore.actions.fetch(res))
+        })
+
+        return loginResponse
     }
 }
 

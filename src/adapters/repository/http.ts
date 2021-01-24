@@ -1,4 +1,5 @@
-import { SERVICES } from "@config/index";
+import CONFIG from "@config/index";
+import AuthInteractor from "@useCases/auth";
 import axios from "axios";
 
 export interface IParamsHTTP {
@@ -16,7 +17,7 @@ class HTTPRepository {
 
     constructor(baseURL?) {
         let service = axios.create({
-            baseURL: baseURL || SERVICES.API_URL_BASE,
+            baseURL: baseURL || CONFIG.API_URL_BASE,
         });
         this.service = service;
     }
@@ -32,8 +33,8 @@ class HTTPRepository {
                 break
             }
             case 401: {
-                window.location.reload();
-                window.location.href = `/#/login`;
+                // window.location.reload();
+                // window.location.href = `/#/login`;
                 break;
             }
             case 500: {
@@ -47,10 +48,10 @@ class HTTPRepository {
     }
 
     private preparePrivateHeaderConfig() {
-        const token = '';
+        const token = new AuthInteractor().getToken()
 
         return {
-            Authorization: `Bearer ${ token }`,
+            token: `${token}`,
         };
     }
 
@@ -83,12 +84,12 @@ class HTTPRepository {
         const { isPrivate = true, isFormData = false } = config;
 
         if (payload) {
-            arg = [ path, payload, this.getDefaultConfig({ isPrivate, isFormData }) ];
+            arg = [path, payload, this.getDefaultConfig({ isPrivate, isFormData })];
         } else {
-            arg = [ path, this.getDefaultConfig({ isPrivate, isFormData }) ];
+            arg = [path, this.getDefaultConfig({ isPrivate, isFormData })];
         }
 
-        return await this.service[ method ](...arg)
+        return await this.service[method](...arg)
             .then((response) => this.handleSuccess(response))
             .catch((error) => this.handleError(error));
     }

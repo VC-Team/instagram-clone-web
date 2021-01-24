@@ -1,4 +1,5 @@
 class User {
+    _id: string = ''
     fullName: string = ''
     userName: string = ''
     phone: number = 0
@@ -8,8 +9,8 @@ class User {
 
     constructor(user) {
         Object.keys(this).forEach(key => {
-            if (user[ key ]) {
-                this[ key ] = user[ key ]
+            if (user[key]) {
+                this[key] = user[key]
             }
         })
     }
