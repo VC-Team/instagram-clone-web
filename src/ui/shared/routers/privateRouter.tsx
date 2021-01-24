@@ -1,6 +1,5 @@
 import React from "react";
-import Home from "@view/Home/index";
-import ProFile from "@view/profile";
+import Home from "@view/pages/Home/index";
 
 export const privateRouter: Array<object> = [
   {
@@ -8,11 +7,5 @@ export const privateRouter: Array<object> = [
     exact: true,
     permissionCode: "ALLOW",
     main: () => <Home />,
-  },
-  {
-    path: "/profile/:userId",
-    exact: true,
-    permissionCode: "ALLOW",
-    main: () => <ProFile />,
   },
 ];

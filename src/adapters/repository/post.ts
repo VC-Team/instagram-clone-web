@@ -28,7 +28,7 @@ class PostRepository {
         return await httpRepository.execute({
             path: `/post/newsFeed`,
             method: 'post',
-            payload
+            payload: {}
         })
     }
 
