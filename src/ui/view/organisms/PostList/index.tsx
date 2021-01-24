@@ -10,8 +10,8 @@ const PostList = () => {
     return (
         <Box className={classes['post-list']}>
             <Post />
-            <Post />
-            <Post />
+            {/* <Post /> */}
+            {/* <Post /> */}
         </Box>
     );
 };

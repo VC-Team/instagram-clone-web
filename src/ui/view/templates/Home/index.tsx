@@ -1,20 +1,23 @@
 import React from 'react';
 
-import Header from '@view/organisms/Header';
-import PostList from '@view/organisms/PostList';
+import Layout from '@view/organisms/layout';
 
-import classes from '@view/templates/Home/style.module.scss';
+import Header from '@view/organisms/Header';
+import Stories from '@view/organisms/stories';
+import PostList from '@view/organisms/PostList';
 
 const Home = () => {
     return (
-        <div className={classes['layout']}>
-            <div className={classes['layout-header']}>
+        <Layout>
+            <Layout.Header>
                 <Header />
-            </div>
-            <div className={classes['layout-main']}>
+            </Layout.Header>
+
+            <Layout.Main>
+                <Stories />
                 <PostList />
-            </div>
-        </div>
+            </Layout.Main>
+        </Layout>
     );
 };
 

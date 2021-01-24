@@ -28,7 +28,7 @@ const Post = () => {
                 <PostAddComment />
             </Box>
 
-            {/* <Modal isOpen>
+            <Modal isOpen>
                 <Box className={classes['post-modal']}>
                     <Box className={classes['post-modal-content']}>
                         <PostContent />
@@ -46,7 +46,7 @@ const Post = () => {
                         <PostAddComment />
                     </Box>
                 </Box>
-            </Modal> */}
+            </Modal>
         </Box>
     );
 };

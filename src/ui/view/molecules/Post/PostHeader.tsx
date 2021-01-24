@@ -12,7 +12,7 @@ const PostHeader = () => {
     return (
         <Box className={classes['post-header']} bordered>
             <Box className={classes['header-avatar']}>
-                <Avatar src="https://instagram.fdad2-1.fna.fbcdn.net/v/t51.2885-19/s150x150/112331157_764326777646280_8349960478372336396_n.jpg?_nc_ht=instagram.fdad2-1.fna.fbcdn.net&_nc_ohc=h5_ux_YvNv4AX-3j9Z_&tp=1&oh=b0f9228cc58c429c3098b192008623aa&oe=603457D9" />
+                <Avatar src="https://instagram.fsgn5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/112331157_764326777646280_8349960478372336396_n.jpg?_nc_ht=instagram.fsgn5-1.fna.fbcdn.net&_nc_ohc=h5_ux_YvNv4AX_AVMAM&tp=1&oh=abdd12562bcd3e294a77deb17ff61372&oe=603457D9" />
             </Box>
             <Box className={classes['header-title']}>
                 <a href="/#">
