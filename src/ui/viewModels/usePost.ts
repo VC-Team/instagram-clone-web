@@ -10,7 +10,6 @@ const usePost = (post) => {
         like,
         unlike,
         reaction: () => {
-            console.log('amILike: ', amILike);
             if (amILike) {
                 unlike(post._id)
             } else {

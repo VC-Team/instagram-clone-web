@@ -23,10 +23,10 @@ const Post = (props: IProps) => {
     const { post } = props
 
     return (
-        <Box className={classes['post']} bordered>
+        <Box className={classes[ 'post' ]} bordered>
             <PostHeader post={post} />
             <PostContent post={post} />
-            <Box className={classes['post-footer']}>
+            <Box className={classes[ 'post-footer' ]}>
                 <PostActions post={post} />
                 <PostCountHeart />
                 <PostStatus post={post} />
@@ -36,11 +36,11 @@ const Post = (props: IProps) => {
             </Box>
 
             <Modal>
-                <Box className={classes['post-modal']}>
-                    <Box className={classes['post-modal-content']}>
+                <Box className={classes[ 'post-modal' ]}>
+                    <Box className={classes[ 'post-modal-content' ]}>
                         <PostContent post={post} />
                     </Box>
-                    <Box className={classes['post-modal-sidebar']}>
+                    <Box className={classes[ 'post-modal-sidebar' ]}>
                         <PostHeader post={post} />
                         <Box style={{ flexGrow: 1 }}>
                             <Box>
