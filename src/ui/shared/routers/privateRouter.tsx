@@ -1,5 +1,6 @@
 import React from "react";
-import Home from "@view/pages/Home/index";
+
+import Home from "@view/pages/Home";
 
 export const privateRouter: Array<object> = [
   {

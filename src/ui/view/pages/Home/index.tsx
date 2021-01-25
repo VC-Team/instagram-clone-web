@@ -1,9 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import Home from '@view/templates/Home';
+const Home = () => {
+    return (
+        <div>
+            home
+        </div>
+    )
+}
 
-const HomePage = () => {
-    return <Home/>;
-};
-
-export default HomePage;
+export default Home
