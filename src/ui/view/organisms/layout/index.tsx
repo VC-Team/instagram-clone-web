@@ -14,15 +14,15 @@ export interface LayoutInterface extends React.FC<LayoutProps> {
 }
 
 const Layout: LayoutInterface = (props) => {
-    return <Box className={classes['layout']}>{props.children}</Box>;
+    return <Box className={classes[ 'layout' ]}>{props.children}</Box>;
 };
 
 const LayoutHeader: React.FC<LayoutProps> = (props) => {
-    return <Box className={classes['layout-header']}>{props.children}</Box>;
+    return <Box className={classes[ 'layout-header' ]}>{props.children}</Box>;
 };
 
 const LayoutMain: React.FC<LayoutProps> = (props) => {
-    return <Box className={classes['layout-main']}>{props.children}</Box>;
+    return <Box className={classes[ 'layout-main' ]}>{props.children}</Box>;
 };
 
 Layout.Header = LayoutHeader;

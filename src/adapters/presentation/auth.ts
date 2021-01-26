@@ -27,7 +27,7 @@ class AuthPresenter extends AuthInteractor {
     }
 
     async login(data: ILoginPort) {
-        const loginResponse = await await super.login(data).then(res => {
+        const loginResponse = await super.login(data).then(res => {
             super.setToken(res.token)
             return res
         })
