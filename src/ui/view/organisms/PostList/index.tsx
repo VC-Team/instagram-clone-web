@@ -8,9 +8,10 @@ import classes from '@view/organisms/PostList/style.module.scss';
 import uselistPosts from 'src/ui/viewModels/useListPosts';
 import { useSelector } from 'react-redux';
 import PostEntities from '@entities/post';
+import { RootState } from '@stores/index';
 
 const PostList = () => {
-    const listPostsStore = useSelector(state => state.listPosts)
+    const listPostsStore = useSelector((state: RootState) => state.listPosts)
     const { getlistPosts, listPosts } = uselistPosts(listPostsStore)
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const PostList = () => {
     }, [])
 
     return (
-        <Box className={classes['post-list']}>
+        <Box className={classes[ 'post-list' ]}>
             {
                 listPosts.map((post: PostEntities) => {
                     return <Post post={post} />

@@ -3,7 +3,7 @@ import User from 'src/domain/entities/user'
 
 const profileStore = createSlice({
     name: 'user',
-    initialState: new User({}),
+    initialState: {} as User,
     reducers: {
         fetchProfile: (state, action) => {
             return new User(action.payload)

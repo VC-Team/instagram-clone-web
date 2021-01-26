@@ -1,32 +1,32 @@
-import PrivateLogin from "src/ui/shared/hoc/PrivateLogin";
-import PublicPage from "src/ui/shared/routers/component/PublicPage";
-import React, { Suspense, useEffect, useState } from "react";
-import { Switch } from "react-router-dom";
+import PrivateLogin from "src/ui/shared/hoc/PrivateLogin"
+import PublicPage from "src/ui/shared/routers/component/PublicPage"
+import React, { Suspense, useEffect, useState } from "react"
+import { Switch } from "react-router-dom"
 import "./../src/ui/styles/styles.scss"
-const PrivatePage = React.lazy(() => import("src/ui/shared/routers/component/PrivatePage"));
-import { io } from "socket.io-client";
+const PrivatePage = React.lazy(() => import("src/ui/shared/routers/component/PrivatePage"))
+import useNotification from "./ui/viewModels/useNotification"
+import { useSelector } from "react-redux"
+import { RootState } from "@stores/index"
+import useUser from "./ui/viewModels/useUser"
 interface Iprops {
-  privateLogin: boolean;
+  privateLogin: boolean
 }
 
 const App = ({ privateLogin }: Iprops) => {
+  const { notification, profile } = useSelector((state: RootState) => state)
+  const { getListNotification, subcribeNotification } = useNotification(notification)
+  const { getProfile } = useUser()
 
   useEffect(() => {
-    const socket = io('http://localhost:9520', {
-      reconnectionDelay: 1000,
-      reconnection: true,
-      transports: [ 'websocket' ],
-      agent: false,
-      upgrade: false,
-      rejectUnauthorized: false
-    });
-    socket.on('connect', function (data) {
-      socket.emit('client send', { client: 'message' })
-      socket.on('post', (data) => {
-        console.log('post data: ', data);
-      })
-    })
+    getProfile()
   }, [])
+
+  useEffect(() => {
+    if (profile._id) {
+      getListNotification(profile._id)
+      subcribeNotification(profile._id)
+    }
+  }, [ profile._id ])
 
   return (
     <Switch>
@@ -40,7 +40,7 @@ const App = ({ privateLogin }: Iprops) => {
           </Suspense>
         )}
     </Switch>
-  );
-};
+  )
+}
 
-export default PrivateLogin(App);
+export default PrivateLogin(App)
