@@ -7,9 +7,9 @@ import classes from './style.module.scss';
 
 export interface ProfileCardProps {
     action?: React.ReactNode;
-    context?: string;
+    context?: React.ReactNode;
     icon?: React.ReactNode;
-    subtitle?: string;
+    subtitle?: React.ReactNode;
     title?: React.ReactNode;
 }
 
