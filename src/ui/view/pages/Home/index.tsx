@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
+
+import Layout from '@view/templates/Layout';
 
 const Home = () => {
-    return (
-        <div>
-            home
-        </div>
-    )
-}
+    return <Layout>@view/pages/Home/index.tsx</Layout>;
+};
 
-export default Home
+export default Home;
