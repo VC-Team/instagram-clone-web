@@ -17,9 +17,9 @@ const Box: React.FC<BoxProps> = (props) => {
     return (
         <div
             className={classnames(
-                classes['box'],
-                bordered && classes['box-bordered'],
-                isLoading && classes['box-loading'],
+                classes[ 'box' ],
+                bordered && classes[ 'box-bordered' ],
+                isLoading && classes[ 'box-loading' ],
                 className
             )}
             {...boxProps}

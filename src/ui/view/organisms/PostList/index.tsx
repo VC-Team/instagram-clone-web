@@ -19,7 +19,7 @@ const PostList = () => {
     }, [])
 
     return (
-        <Box className={classes[ 'post-list' ]}>
+        <Box className={classes['post-list']}>
             {
                 listPosts.map((post: PostEntities) => {
                     return <Post post={post} />

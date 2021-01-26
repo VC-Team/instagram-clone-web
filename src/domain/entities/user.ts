@@ -8,6 +8,7 @@ class User {
     avatar: string = ''
 
     constructor(user) {
+        if (!user) return
         Object.keys(this).forEach(key => {
             if (user[key]) {
                 this[key] = user[key]
