@@ -4,7 +4,8 @@ import socketRepository from "./socket";
 class NoTificationRepository {
     async getListNotification(userId) {
         return await httpRepository.execute({
-            path: 'notification'
+            path: 'notification',
+            method: "post",
         })
     }
 }
