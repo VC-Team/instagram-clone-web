@@ -14,7 +14,7 @@ import User from '@entities/user'
 import useUser from 'src/ui/viewModels/useUser'
 
 const DefaultLayout = (props) => {
-    const [visible, setVisible] = useState(false);
+    const [ visible, setVisible ] = useState(false);
     const profile: User = useSelector(state => state.profile)
     const { getProfile } = useUser()
 

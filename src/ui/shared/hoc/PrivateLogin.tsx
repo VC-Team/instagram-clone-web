@@ -1,8 +1,8 @@
-import { getInfoFromToken, getToken } from "@api/auth";
-import { useAsync } from "src/ui/shared/hook/useAsync";
+// import { getInfoFromToken, getToken } from "@api/auth";
+// import { useAsync } from "src/ui/shared/hook/useAsync";
 import React, { useEffect } from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import { useRecoilState } from "recoil";
+// import { useRecoilState } from "recoil";
 
 function PrivateLogin(Component: React.ComponentType<any | string>) {
   return withRouter(({ history }: RouteComponentProps) => {
@@ -23,7 +23,7 @@ function PrivateLogin(Component: React.ComponentType<any | string>) {
     return (
       <>
         {/* {login.controlLogin ? ( */}
-        <Component privateLogin={true} />
+        <Component privateLogin={false} />
         {/* ) : null} */}
       </>
     );
