@@ -13,21 +13,6 @@ interface Iprops {
 }
 
 const App = ({ privateLogin }: Iprops) => {
-  const { notification, profile } = useSelector((state: RootState) => state)
-  const { getListNotification, subcribeNotification } = useNotification(notification)
-  const { getProfile } = useUser()
-
-  useEffect(() => {
-    getProfile()
-  }, [])
-
-  useEffect(() => {
-    if (profile._id) {
-      getListNotification(profile._id)
-      subcribeNotification(profile._id)
-    }
-  }, [ profile._id ])
-
   return (
     <Switch>
       {privateLogin ? (

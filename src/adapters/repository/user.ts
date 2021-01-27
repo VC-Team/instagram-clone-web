@@ -42,6 +42,14 @@ class UserRepository {
             payload
         })
     }
+
+    async search(payload) {
+        return await httpRepository.execute({
+            path: `/user/search`,
+            method: "post",
+            payload
+        })
+    }
 }
 
 export default UserRepository

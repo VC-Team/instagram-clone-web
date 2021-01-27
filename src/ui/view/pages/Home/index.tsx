@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Home from '@view/templates/Home';
+import Layout from '@view/templates/Layout';
 
-const HomePage = () => {
-    return <Home/>;
+const Home = () => {
+    return <Layout>@view/pages/Home/index.tsx</Layout>;
 };
 
-export default HomePage;
+export default Home;

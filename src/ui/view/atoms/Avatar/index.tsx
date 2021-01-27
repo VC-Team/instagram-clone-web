@@ -12,8 +12,6 @@ export interface AvatarProps
     story?: boolean;
     storyActive?: boolean;
     storyLoading?: boolean;
-    spin?: boolean;
-    style?: React.CSSProperties;
 }
 
 const Avatar: React.FC<AvatarProps> = (props) => {
@@ -23,9 +21,8 @@ const Avatar: React.FC<AvatarProps> = (props) => {
         size,
         src,
         story,
-        storyLoading,
         storyActive,
-        style,
+        storyLoading,
         ...avatarProps
     } = props;
 
@@ -36,7 +33,6 @@ const Avatar: React.FC<AvatarProps> = (props) => {
                 size !== 'medium' && classes[`avatar-${size}`],
                 className
             )}
-            style={style}
             {...avatarProps}
         >
             {story && (
@@ -44,7 +40,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
                     className={classnames(
                         classes['avatar-story'],
                         storyLoading && classes['avatar-story-loading'],
-                        storyActive && classes['avatar-story-active'],
+                        storyActive && classes['avatar-story-active']
                     )}
                 >
                     <circle cx="50%" cy="50%" r="calc(50% - 2px)" />

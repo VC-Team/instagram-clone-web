@@ -9,15 +9,13 @@ export interface ButtonProps
         HTMLButtonElement
     > {
     children?: React.ReactNode;
-    className?: string;
     disabled?: boolean;
     fullWidth?: boolean;
-    type?: 'button' | 'submit' | 'reset';
     variant?: 'contained' | 'outlined' | 'text';
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-    const { children, className, fullWidth, type = 'button', variant = 'text', ...buttonProps} = props;
+    const { children, className, fullWidth, variant = 'text', ...buttonProps} = props;
 
     return (
         <button
@@ -27,7 +25,6 @@ const Button: React.FC<ButtonProps> = (props) => {
                 variant && classes[`button-${variant}`],
                 className
             )}
-            type={type}
             {...buttonProps}
         >
             {children}
